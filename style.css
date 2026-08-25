@@ -10,8 +10,8 @@ iframe{max-width:100%;border:0}
 
 body{font-family:'Avenir Next','Segoe UI',Helvetica,Arial,sans-serif;background:var(--chalk);color:var(--ink);line-height:1.6}
 a{color:var(--navy)}
-.container{max-width:1080px;margin:0 auto;padding:0 24px}
-header{background:var(--chalk);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.container{max-width:1080px;margin:0 auto;padding:0 28px}
+header{background:var(--chalk);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;padding:0 8px}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
 .logo{font-size:1.4rem;font-weight:700;color:var(--navy);text-decoration:none}
 .logo span{color:var(--red)}
@@ -66,8 +66,10 @@ footer{background:var(--ink);color:#B9BFC7;padding:40px 0;margin-top:40px;font-s
 footer a{color:#D9E2EF}
 .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
 @media(max-width:760px){
-.container{padding:0 16px}
-.nav{flex-wrap:wrap;gap:8px 12px;padding:12px 0}
+.container{padding:0 24px}
+header{padding:0 12px}
+header .container{padding-left:20px;padding-right:20px}
+.nav{flex-wrap:wrap;gap:8px 12px;padding:14px 0}
 .logo{font-size:1.25rem;flex-shrink:0}
 .nav-links{width:100%;gap:2px 4px}
 .nav-links a{margin-left:0;margin-right:16px;padding:10px 0;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
@@ -88,11 +90,11 @@ footer a{color:#D9E2EF}
 iframe{height:360px!important}
 .section{padding:36px 0}
 .section h2{font-size:1.45rem}
-.cta-band{padding:28px 16px;margin:24px 0;border-radius:14px}
+.cta-band{padding:28px 20px;margin:24px 0;border-radius:14px}
 .cta-band h2{font-size:1.35rem}
 .about{grid-template-columns:1fr}
 .about .ph{height:220px}
-article{padding:36px 16px}
+article{padding:36px 24px}
 article h1{font-size:1.7rem}
 article table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .foot-grid{flex-direction:column;gap:16px}
