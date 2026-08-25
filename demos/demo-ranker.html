@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Avenir Next','Helvetica Neue',sans-serif; background:#F7F4EE; color:#1C2126;
+       display:flex; align-items:center; justify-content:center; min-height:100vh; }
+.demo { width:min(96vw, 680px); }
+.cap { font-size:14px; font-weight:700; color:#6E7681; letter-spacing:1px; margin-bottom:10px; }
+.cap span { color:#C8102E; }
+.sheet { background:#fff; border-radius:12px; box-shadow:0 14px 36px rgba(26,43,69,.22); overflow:hidden; }
+.bar { background:#1A2B45; padding:10px 16px; color:#fff; font-size:14px; font-weight:600; display:flex; gap:9px; align-items:center; }
+.dot { width:10px; height:10px; border-radius:50%; background:#C8102E; }
+table { width:100%; border-collapse:collapse; font-size:14.5px; }
+th { background:#2E4A73; color:#fff; padding:9px 12px; text-align:left; font-weight:600; }
+td { padding:8px 12px; border-bottom:1px solid #E8EDF5; }
+tr.new-row { animation:pop .45s ease; }
+tr.hidden { display:none; }
+@keyframes pop { from { background:#FBE9EC; } to { background:transparent; } }
+.pos { color:#1A2B45; font-weight:700; } .accent { color:#C8102E; font-weight:700; }
+.kpis { display:flex; gap:12px; margin-top:14px; }
+.kpi { background:#fff; border-radius:10px; padding:12px 16px; flex:1; box-shadow:0 8px 20px rgba(26,43,69,.13); }
+.kpi .l { font-size:10.5px; color:#6E7681; font-weight:700; letter-spacing:.8px; }
+.kpi .v { font-size:26px; color:#1A2B45; font-weight:700; margin-top:2px; transition:transform .2s; }
+.kpi .v.bump { transform:scale(1.12); color:#C8102E; }
+.rankbadge { display:inline-block; background:#C8102E; color:#fff; border-radius:50%; width:24px; height:24px;
+             text-align:center; line-height:24px; font-weight:700; font-size:13px; }
+.foot { margin-top:10px; font-size:12px; color:#6E7681; text-align:center; }
+</style></head><body>
+<div class="demo">
+<div class="cap">LIVE DEMO — <span>type tryout scores, get a ranked roster</span></div>
+<div class="sheet"><div class="bar"><span class="dot"></span>Tryout Ranker — Coach's Season Ops Pack</div>
+<table id="t"><tr><th>Player</th><th>Contact</th><th>Field</th><th>Arm</th><th>Attitude</th><th>Score</th><th>Rank</th></tr></table></div>
+<div class="foot" id="foot">Weights are editable — value attitude over power? Make it so.</div>
+</div>
+<script>
+const P=[["J. Alvarez",4,5,4,5],["T. Brooks",4,4,5,4],["M. Chen",5,3,4,4],
+         ["R. Davis",3,4,3,5],["K. Ellis",5,4,3,3],["D. Foster",3,3,4,4]];
+const W=[3,3,3,3];
+const score=p=>{let n=0,d=0;for(let j=0;j<4;j++){n+=p[j+1]*W[j];d+=W[j];}return n/d;};
+function render(step,animate){
+  // steps 0..5 add players; step 6 = sorted with ranks
+  const t=document.getElementById('t');
+  while(t.rows.length>1)t.deleteRow(1);
+  let rows=P.slice(0,Math.min(step+1,P.length)).map(p=>[p,score(p)]);
+  const sorted=step>=P.length;
+  if(sorted)rows.sort((a,b)=>b[1]-a[1]);
+  rows.forEach(([p,s],i)=>{
+    const r=t.insertRow(-1);
+    if(animate&&((!sorted&&i===rows.length-1)||sorted))r.className='new-row';
+    r.innerHTML=`<td>${p[0]}</td><td>${p[1]}</td><td>${p[2]}</td><td>${p[3]}</td><td>${p[4]}</td>`+
+      `<td class="pos">${s.toFixed(2)}</td><td>${sorted?'<span class="rankbadge">'+(i+1)+'</span>':'—'}</td>`;
+  });
+  document.getElementById('foot').textContent = sorted ?
+    "Ranked in seconds — sort conversations, not arguments." :
+    "Weights are editable — value attitude over power? Make it so.";
+}
+const q=new URLSearchParams(location.search);
+if(q.has('f')){ render(parseInt(q.get('f')),false); }
+else { let s=-1;
+  setInterval(()=>{ s=s>=P.length+2? -1 : s+1; render(Math.max(0,Math.min(s,P.length)),s>=0); }, 1050); }
+</script></body></html>
