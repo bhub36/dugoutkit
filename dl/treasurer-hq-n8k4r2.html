@@ -21,15 +21,20 @@ Stuck? <a href="mailto:hello@dugoutkit.com">hello@dugoutkit.com</a> — real ans
 <div>© 2026 DugoutKit • <a href="../terms.html">Terms &amp; license</a><br>Training and pitch-count content is informational, not medical advice.</div>
 </div></footer>
 <script>
+const PARTS = 8;
 const btn = document.getElementById("dl");
 const st = document.getElementById("st");
 btn.addEventListener("click", async function () {
   btn.disabled = true;
   st.textContent = "Preparing your ZIP…";
   try {
-    const res = await fetch("../files/DugoutKit-Team-Treasurer-HQ.zip.b64");
-    if (!res.ok) throw new Error("missing zip");
-    const b64 = (await res.text()).replace(/\s+/g, "");
+    const chunks = [];
+    for (let i = 0; i < PARTS; i++) {
+      const res = await fetch("../files/tthq-b64/part" + i + ".txt");
+      if (!res.ok) throw new Error("missing part " + i);
+      chunks.push(await res.text());
+    }
+    const b64 = chunks.join("").replace(/\s+/g, "");
     const bin = atob(b64);
     const bytes = new Uint8Array(bin.length);
     for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
