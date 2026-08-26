@@ -1,2 +1,5 @@
 User-agent: *
+Allow: /
 Disallow: /dl/
+
+Sitemap: http://dugoutkit.com/sitemap.xml
