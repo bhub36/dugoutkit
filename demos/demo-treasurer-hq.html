@@ -1,0 +1,121 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Avenir Next','Helvetica Neue',sans-serif; background:#F7F4EE; color:#1C2126;
+       display:flex; align-items:center; justify-content:center; min-height:100vh; }
+.demo { width:min(96vw, 680px); }
+.cap { font-size:14px; font-weight:700; color:#6E7681; letter-spacing:1px; margin-bottom:10px; }
+.cap span { color:#C8102E; }
+.sheet { background:#fff; border-radius:12px; box-shadow:0 14px 36px rgba(26,43,69,.22); overflow:hidden; }
+.bar { background:#1A2B45; padding:10px 16px; color:#fff; font-size:14px; font-weight:600; display:flex; gap:9px; align-items:center; }
+.dot { width:10px; height:10px; border-radius:50%; background:#C8102E; }
+table { width:100%; border-collapse:collapse; font-size:14.5px; }
+th { background:#2E4A73; color:#fff; padding:9px 12px; text-align:left; font-weight:600; }
+td { padding:8px 12px; border-bottom:1px solid #E8EDF5; }
+tr.new-row { animation:pop .45s ease; }
+tr.hidden { display:none; }
+@keyframes pop { from { background:#FBE9EC; } to { background:transparent; } }
+.pos { color:#1A2B45; font-weight:700; } .accent { color:#C8102E; font-weight:700; }
+.ok { color:#1A2B45; font-weight:700; }
+.partial { background:#FFF2CC; }
+.unpaid { background:#FFCDD2; }
+.paid { background:#C6EFCE; }
+.kpis { display:flex; gap:12px; margin-top:14px; }
+.kpi { background:#fff; border-radius:10px; padding:12px 16px; flex:1; box-shadow:0 8px 20px rgba(26,43,69,.13); }
+.kpi .l { font-size:10.5px; color:#6E7681; font-weight:700; letter-spacing:.8px; }
+.kpi .v { font-size:26px; color:#1A2B45; font-weight:700; margin-top:2px; transition:transform .2s; }
+.kpi .v.bump { transform:scale(1.12); color:#C8102E; }
+.foot { margin-top:10px; font-size:12px; color:#6E7681; text-align:center; }
+.split { display:grid; grid-template-columns:1.15fr .85fr; gap:12px; }
+.tag { display:inline-block; font-size:12px; font-weight:700; padding:2px 8px; border-radius:10px; }
+.tag.p { background:#FFF2CC; color:#1A2B45; }
+.tag.ok { background:#C6EFCE; color:#1A2B45; }
+.tag.no { background:#FFCDD2; color:#1A2B45; }
+@media (max-width:500px){
+  .demo{width:100%}
+  .cap{font-size:12px;letter-spacing:.4px}
+  .bar{padding:8px 10px;font-size:12px}
+  table{font-size:12px}
+  th,td{padding:6px 6px}
+  .kpis{flex-wrap:wrap;gap:8px}
+  .kpi{min-width:calc(50% - 8px);padding:10px 12px}
+  .kpi .v{font-size:22px}
+  .split{grid-template-columns:1fr}
+}
+</style></head><body>
+<div class="demo">
+<div class="cap">LIVE DEMO — <span>log a Venmo, the dues board does the math</span></div>
+<div class="split">
+<div class="sheet"><div class="bar"><span class="dot"></span>Money In — Team Treasurer HQ</div>
+<table id="t"><tr><th>Date</th><th>Family</th><th>Cat</th><th>Amt</th><th>Method</th></tr></table></div>
+<div class="sheet"><div class="bar"><span class="dot"></span>Dues Board</div>
+<table id="d"><tr><th>Family</th><th>Paid</th><th>Status</th></tr></table></div>
+</div>
+<div class="kpis">
+<div class="kpi"><div class="l">COLLECTION RATE</div><div class="v" id="k0">—</div></div>
+<div class="kpi"><div class="l">UNPAID $</div><div class="v" id="k1">—</div></div>
+<div class="kpi"><div class="l">CASH-BOX</div><div class="v" id="k2">—</div></div>
+</div>
+<div class="foot">Fictional Riverside 12U Hawks — you type the yellow columns. Everything else is automatic.</div>
+</div>
+<script>
+const ROWS = [
+  ["8/20","Hale","Dues",150,"Venmo"],
+  ["8/21","Ortiz","Dues",150,"Venmo"],
+  ["8/22","Nguyen","Dues",75,"Venmo"],
+  ["8/26","Ellis","Dues",150,"Cash"],
+  ["9/01","Ruiz","Dues",50,"Venmo"]
+];
+const EXTRA = ["9/04","Nguyen","Dues",75,"Venmo"];
+const OWED = 1725;
+const START = 120, OUT = 455, IN0 = 1210;
+function money(n){ return "$" + n.toLocaleString("en-US"); }
+function rate(collected){ return ((collected/OWED)*100).toFixed(1) + "%"; }
+function kpis(step){
+  const extra = step >= 1;
+  const collected = extra ? 1175 : 1100;
+  const unpaid = extra ? 550 : 625;
+  const inbox = extra ? 1285 : 1210;
+  const cash = START + inbox - OUT;
+  return [rate(collected), money(unpaid), money(cash)];
+}
+function render(step, animate){
+  const t=document.getElementById("t");
+  while(t.rows.length>1) t.deleteRow(1);
+  const show = ROWS.concat(step>=1 ? [EXTRA] : []);
+  show.forEach((r,i)=>{
+    const tr=t.insertRow(-1);
+    if(animate && step>=1 && i===show.length-1) tr.className="new-row";
+    tr.innerHTML = `<td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="pos">${money(r[3])}</td><td>${r[4]}</td>`;
+  });
+  const d=document.getElementById("d");
+  while(d.rows.length>1) d.deleteRow(1);
+  const board = [
+    ["Hale",150,"Paid"],
+    ["Nguyen", step>=1 ? 150 : 75, step>=1 ? "Paid" : "Partial"],
+    ["Ruiz",50,"Partial"],
+    ["Kim",0,"Unpaid"]
+  ];
+  board.forEach((r,i)=>{
+    const tr=d.insertRow(-1);
+    if(animate && step>=1 && r[0]==="Nguyen") tr.className="new-row";
+    const cls = r[2]==="Paid"?"paid":(r[2]==="Partial"?"partial":"unpaid");
+    tr.classList.add(cls);
+    const tag = r[2]==="Paid"?"ok":(r[2]==="Partial"?"p":"no");
+    tr.innerHTML = `<td>${r[0]}</td><td class="pos">${money(r[1])}</td><td><span class="tag ${tag}">${r[2]}</span></td>`;
+  });
+  kpis(step).forEach((v,j)=>{
+    const el=document.getElementById("k"+j);
+    el.textContent=v;
+    if(animate && step>=1){ el.classList.add("bump"); setTimeout(()=>el.classList.remove("bump"),250); }
+  });
+}
+const q=new URLSearchParams(location.search);
+if(q.has("f")){ render(parseInt(q.get("f")), false); }
+else {
+  let s=0;
+  render(0,false);
+  setInterval(()=>{ s = s>=3 ? 0 : s+1; render(s>=1?1:0, true); }, 950);
+}
+</script></body></html>
