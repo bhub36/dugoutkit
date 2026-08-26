@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dl/
 
-Sitemap: http://dugoutkit.com/sitemap.xml
+Sitemap: https://dugoutkit.com/sitemap.xml
