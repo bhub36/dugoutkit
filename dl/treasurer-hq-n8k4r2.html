@@ -8,11 +8,11 @@
 <a class="logo" href="../index.html">Dugout<span>Kit</span></a>
 <nav class="nav-links"><a href="../index.html#products">Tools</a><a href="../blog/index.html">Guides</a><a href="../free.html">Free stuff</a><a href="../about.html">About</a></nav>
 </div></header>
-
 <div class="container" style="max-width:680px;text-align:center;padding:80px 24px">
 <h1 style="color:var(--navy);margin-bottom:14px">Let's go! ⚾</h1>
 <p style="color:var(--grey);margin-bottom:30px">Thanks for supporting a player-built small business. Your download is below — your Stripe receipt links back here any time.</p>
 <p style="margin:14px 0"><button type="button" class="btn red" id="dl" style="font-size:1.1rem;border:0;cursor:pointer">⬇ Download Team Treasurer HQ</button></p>
+<p id="st" class="small" style="margin-top:16px"></p>
 <p class="small" style="margin-top:26px">The Quick-Start PDF inside walks through Google Sheets and Excel setup.<br>
 Stuck? <a href="mailto:hello@dugoutkit.com">hello@dugoutkit.com</a> — real answers within 24 hours.</p>
 </div>
@@ -21,19 +21,31 @@ Stuck? <a href="mailto:hello@dugoutkit.com">hello@dugoutkit.com</a> — real ans
 <div>© 2026 DugoutKit • <a href="../terms.html">Terms &amp; license</a><br>Training and pitch-count content is informational, not medical advice.</div>
 </div></footer>
 <script>
-const ZIP_B64 = "PLACEHOLDER_WILL_BE_REPLACED";
-document.getElementById("dl").addEventListener("click", function () {
-  const bin = atob(ZIP_B64);
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  const blob = new Blob([bytes], {type: "application/zip"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "DugoutKit-Team-Treasurer-HQ.zip";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
+const btn = document.getElementById("dl");
+const st = document.getElementById("st");
+btn.addEventListener("click", async function () {
+  btn.disabled = true;
+  st.textContent = "Preparing your ZIP…";
+  try {
+    const res = await fetch("../files/DugoutKit-Team-Treasurer-HQ.zip.b64");
+    if (!res.ok) throw new Error("missing zip");
+    const b64 = (await res.text()).replace(/\s+/g, "");
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const blob = new Blob([bytes], {type: "application/zip"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "DugoutKit-Team-Treasurer-HQ.zip";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
+    st.textContent = "";
+  } catch (e) {
+    st.textContent = "Download failed — email hello@dugoutkit.com and we will send the file.";
+  }
+  btn.disabled = false;
 });
 </script>
 </body></html>
