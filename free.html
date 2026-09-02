@@ -22,4 +22,18 @@
 <div><b style="color:#fff">DugoutKit</b> — season tools for players, coaches &amp; team parents.<br>Questions? <a href="mailto:hello@dugoutkit.com">hello@dugoutkit.com</a></div>
 <div>© 2026 DugoutKit • <a href="terms.html">Terms &amp; license</a><br>Training and pitch-count content is informational, not medical advice.</div>
 </div></footer>
+<script src="js/posthog.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  if(!window.posthog) return;
+  document.querySelectorAll('a.btn[download]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var href=a.getAttribute('href')||'';
+      var name=href.split('/').pop()||'download';
+      posthog.capture('free_cta_click',{cta:name, page:'free.html'});
+    });
+  });
+});
+</script>
+
 </body></html>
