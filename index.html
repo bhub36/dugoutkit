@@ -30,7 +30,7 @@
 <h1>Youth baseball tools that start free</h1>
 <p>Print a lineup card and run the travel-ball cost math — free, no email. When you want the full season tracker, Player Season HQ is ready below.</p>
 <div class="hero-actions">
-<a class="btn red" href="free.html">Start free</a>
+<a class="btn red" id="free-hero" href="free.html">Start free</a>
 </div>
 <p class="hero-alt"><a href="https://buy.stripe.com/bJecN58P90Nb7Zl89Tg7e04">Buy Player Season HQ — $24</a> · <a href="products/player-season-hq-baseball.html">See inside</a> · <a href="products/player-season-hq-softball.html">Softball</a></p>
 <div class="badge-row"><span class="chip">Free tools, no email wall</span><span class="chip">Google Sheets + Excel</span><span class="chip">One-time paid tools</span><span class="chip">Family-run</span></div>
@@ -82,4 +82,20 @@
 <div>© 2026 DugoutKit • <a href="terms.html">Terms &amp; license</a><br>Training and pitch-count content is informational, not medical advice.</div>
 </div></footer>
 <script src="js/posthog.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var a=document.getElementById('free-hero');
+  if(!a) return;
+  a.addEventListener('click',function(e){
+    var href=a.getAttribute('href')||'';
+    if(window.posthog){
+      posthog.capture('free_cta_click',{cta:'hero_free', href:href, page:'index.html'});
+    }
+    if(href && href.charAt(0)!=='#' && !a.hasAttribute('download')){
+      e.preventDefault();
+      setTimeout(function(){ window.location.href=href; }, 180);
+    }
+  });
+});
+</script>
 </body></html>
