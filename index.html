@@ -30,7 +30,8 @@
 <h1>Youth baseball tools that start free</h1>
 <p>Free printable lineup card + travel-ball cost estimator — no email. When you want the full season tracker, Player Season HQ is ready below.</p>
 <div class="hero-actions">
-<a class="btn red" id="free-hero" href="free.html">Get free lineup + cost tools</a>
+<a class="btn red" id="free-hero-lineup" href="files/DugoutKit-Free-Lineup-Card.pdf" download>⬇ Free lineup card (PDF)</a>
+<a class="btn red" id="free-hero-cost" href="files/DugoutKit-Free-Season-Cost-Estimator.xlsx" download>⬇ Free cost estimator</a>
 </div>
 <div id="freebie-preview" style="max-width:520px;margin:18px auto 8px;text-align:center">
 <p class="small" style="margin:0 0 10px;font-weight:600;color:var(--navy)">What you get free</p>
@@ -97,17 +98,18 @@
 <script src="js/posthog.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var a=document.getElementById('free-hero');
-  if(!a) return;
-  a.addEventListener('click',function(e){
-    var href=a.getAttribute('href')||'';
-    if(window.posthog){
-      posthog.capture('free_cta_click',{cta:'hero_free', href:href, page:'index.html'});
-    }
-    if(href && href.charAt(0)!=='#' && !a.hasAttribute('download')){
-      e.preventDefault();
-      setTimeout(function(){ window.location.href=href; }, 180);
-    }
+  function capture(event, props){
+    if(!window.posthog) return;
+    posthog.capture(event, props||{});
+  }
+  ['free-hero-lineup','free-hero-cost'].forEach(function(id){
+    var a=document.getElementById(id);
+    if(!a) return;
+    a.addEventListener('click',function(){
+      var href=a.getAttribute('href')||'';
+      var name=href.split('/').pop()||'download';
+      capture('free_cta_click',{cta:name, href:href, page:'index.html'});
+    });
   });
 });
 </script>
