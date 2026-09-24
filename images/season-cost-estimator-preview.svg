@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400" viewBox="0 0 700 400" role="img" aria-label="Preview of the Travel Ball Season Cost Estimator spreadsheet showing cost line items and season total">
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="14" y="32" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#1a2b4b">Travel Ball Season Cost Estimator</text>
+<text x="14" y="50" font-family="system-ui, sans-serif" font-size="10" fill="#6b7280">Free from DugoutKit — the honest math before you commit. Chalk cells = type.</text>
+<rect x="14" y="64" width="570" height="26" fill="#1a2b4b"/>
+<text x="22" y="81" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="start">Cost item</text>
+<text x="381" y="81" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="end">Per unit</text>
+<text x="451" y="81" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="end">Count</text>
+<text x="576" y="81" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="end">Season total</text>
+<rect x="14" y="90" width="570" height="26" fill="#f7f3ea" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="92" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="92" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="107" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Team dues / fees</text>
+<text x="381" y="107" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$1,500.00</text>
+<text x="451" y="107" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">1</text>
+<text x="576" y="107" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$1,500.00</text>
+<rect x="14" y="116" width="570" height="26" fill="#fff" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="118" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="118" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Extra tournament fees</text>
+<text x="381" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$0.00</text>
+<text x="451" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">0</text>
+<text x="576" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$0.00</text>
+<rect x="14" y="142" width="570" height="26" fill="#f7f3ea" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="144" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="144" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="159" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Hotel nights</text>
+<text x="381" y="159" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$140.00</text>
+<text x="451" y="159" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">8</text>
+<text x="576" y="159" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$1,120.00</text>
+<rect x="14" y="168" width="570" height="26" fill="#fff" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="170" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="170" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Travel (gas/flights) per trip</text>
+<text x="381" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$90.00</text>
+<text x="451" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">8</text>
+<text x="576" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$720.00</text>
+<rect x="14" y="194" width="570" height="26" fill="#f7f3ea" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="196" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="196" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="211" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Meals on the road per trip</text>
+<text x="381" y="211" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$60.00</text>
+<text x="451" y="211" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">8</text>
+<text x="576" y="211" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$480.00</text>
+<rect x="14" y="220" width="570" height="26" fill="#fff" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="222" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="222" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="237" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Equipment (bat, glove, cleats...)</text>
+<text x="381" y="237" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$400.00</text>
+<text x="451" y="237" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">1</text>
+<text x="576" y="237" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$400.00</text>
+<rect x="14" y="246" width="570" height="26" fill="#f7f3ea" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="248" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="248" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Private lessons per month</text>
+<text x="381" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$120.00</text>
+<text x="451" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">6</text>
+<text x="576" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$720.00</text>
+<rect x="14" y="272" width="570" height="26" fill="#fff" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="274" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="274" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="289" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Camps &amp; showcases</text>
+<text x="381" y="289" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$200.00</text>
+<text x="451" y="289" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">1</text>
+<text x="576" y="289" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$200.00</text>
+<rect x="14" y="298" width="570" height="26" fill="#f7f3ea" stroke="#e5e7eb" stroke-width="0.5"/>
+<rect x="286" y="300" width="101" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<rect x="391" y="300" width="66" height="22" fill="#fffef5" stroke="#e8e0c8" stroke-width="0.5" rx="2"/>
+<text x="22" y="315" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="start">Misc (photos, spirit wear, tips)</text>
+<text x="381" y="315" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$100.00</text>
+<text x="451" y="315" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">1</text>
+<text x="576" y="315" font-family="system-ui, sans-serif" font-size="11" fill="#111827" text-anchor="end">$100.00</text>
+<rect x="14" y="324" width="445" height="26" fill="#1a2b4b"/>
+<rect x="459" y="324" width="125" height="26" fill="#fff" stroke="#e5e7eb" stroke-width="0.5"/>
+<text x="22" y="341" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff">SEASON TOTAL</text>
+<text x="576" y="342" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#dc2626" text-anchor="end">$5,240.00</text>
+<text x="14" y="364" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#111827">Per month (10-month season)</text>
+<text x="584" y="364" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#111827" text-anchor="end">$524.00</text>
+</svg>
